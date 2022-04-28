@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>User info</h2>
+          <%= image_tag @user.get_profile_image(100,100) %>
+          <table class="table">
+            <tbody>
+              <tr></tr>
+              <tr>
+                <th>name</th>
+                <th>
+                  <%= @user.name %>
+                </th>
+              </tr>
+              <tr>
+                <th>introduction</th>
+                <th><%= @user.introduction %></th>
+              </tr>
+            </tbody>
+          </table>
+          <%= link_to edit_user_path(@user.id), class:'btn btn-outline-secondary btn-block' do %>
+           <i class="fas fa-user-cog"></i>
+          <% end %>
+        <h2 class="mt-3">New book</h2>
+        <%= form_with model: Book.new do |f| %>
+          <div class="form-group">
+            <%= f.label :Title %>
+            <%= f.text_field :title, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :Opinion %>
+            <%= f.text_area :body, class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Create Book', class:"btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            <% @user.books.each do |book| %>
+              <tr>
+                <td>
+                  <%= link_to @user do %>
+                    <%= image_tag @user.get_profile_image(80,80) %>
+                    <br>
+                    <%= @user.name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to book.title %>
+                </td>
+                <td>
+                  <%= book.body %>
+                </td>
+                <td>
+                  <% if book.user == current_user %>
+                    <%= link_to "Edit", edit_book_path, class:"btn btn-sm btn-success" %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if book.user == current_user %>
+                    <%= link_to "Destroy", book_path(book), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか?" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
