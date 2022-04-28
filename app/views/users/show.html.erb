@@ -2,7 +2,7 @@
         <div class="row">
             <div class="col-md-3">
                   <h2>User info</h2>
-                  <%= image_tag @users.get_profile_image(100,100) %>
+                  <%= image_tag @user.get_profile_image(100,100) %>
                       <table class="table">
                             <tbody>
                               <tr></tr>
@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% @users.books.each do |book| %>
+                        <% @user.books.each do |book| %>
                             <tr>
                                 <td>
                                   <%= link_to image_tag book.user.get_profile_image(80,80) %>
