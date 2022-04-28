@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'd8fc54dbed69c108f81406c199111a6670284004bc9cc8a96a9b5fee5786f17200747d362979610352e61dabe33ff1966e3d5fdcf05f72ef0e4605b429024968'
+  # config.secret_key = '8df4f79c95fd2861913be7772de840352903f5e434887cf07ec2fe8a78f1e8819c6c793ed11461444cde6b7843fccef04a73a67ae4211393b197d4ae3d2d78e5'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -46,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:name]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'af020e0a849ab92341e2a8c5bd157848e44db2968c1074b57400ae551a3b4a427ea01ea6d74370946b96ab216e8fd7f3f8ee6b4ca7d3912c090a98055d5f423a'
+  # config.pepper = 'f3a1086f3a610b9f23d7bb5bcc33f5f7bc3774b43b836228e092ff38982fe591d924b426ce6bff0b5e4105bf3637be2d6c935417a989b987c18af3eb60f0a2a1'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -308,4 +308,6 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+
+  config.scoped_views = true
 end
